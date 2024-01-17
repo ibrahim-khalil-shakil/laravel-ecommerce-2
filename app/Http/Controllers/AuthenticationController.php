@@ -13,7 +13,7 @@ class AuthenticationController extends Controller
 {
     public function signUpForm()
     {
-        return view('Authentication.register');
+        return view('Backend.Authentication.register');
     }
 
     public function signUpStore(SignUpRequest $request)
@@ -30,14 +30,14 @@ class AuthenticationController extends Controller
             else
                 return redirect('login')->with('error', 'Data is not Saved. Please try again');
         } catch (Exception $e) {
+            // dd($e);
             return redirect('login')->with('error', 'Registration Failed. Please try again');
-            dd($e);
         }
     }
 
     public function signInForm()
     {
-        return view('Authentication.login');
+        return view('Backend.Authentication.login');
     }
 
     public function signInCheck(SignInRequest $request)
@@ -53,8 +53,8 @@ class AuthenticationController extends Controller
             } else
                 return redirect()->route('login')->with('error', 'Invalid Username. Please try again');
         } catch (Exception $e) {
-            return redirect('login')->with('error', 'Login Failed. Please try again');
             dd($e);
+            return redirect('login')->with('error', 'Login Failed. Please try again');
         }
     }
 
