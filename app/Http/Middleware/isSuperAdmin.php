@@ -24,7 +24,7 @@ class IsSuperAdmin
             if (!$user) {
                 return redirect()->route('logOut');
             } else if (currentUser() != 'superadmin') {
-                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Access Denied'));
+                return redirect()->back()->with('error','Access Denied');
             } else {
                 return $next($request);
             }
